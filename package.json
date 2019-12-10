@@ -1,0 +1,24 @@
+{
+  "name": "iconly",
+  "version": "1.0.0",
+  "description": "Lifely icon parser",
+  "main": "dist/iconly.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lifelynl/Iconly.git"
+  },
+  "author": "Lifely",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/lifelynl/Iconly/issues"
+  },
+  "homepage": "https://github.com/lifelynl/Iconly#readme",
+  "dependencies": {
+    "@types/node": "^12.12.16",
+    "@types/svgo": "^1.3.0",
+    "svgo": "^1.3.2"
+  }
+}

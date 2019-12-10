@@ -1,5 +1,18 @@
 {
-	"compilerOptions": {
-		"esModuleInterop": true
-	}
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "esnext",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "incremental": true,
+        "skipLibCheck": true,
+        "outDir": "dist",
+        "lib": ["es2018"],
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": ["./src/**/*"]
 }
