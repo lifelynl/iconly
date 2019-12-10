@@ -1,18 +1,11 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "target": "esnext",
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "incremental": true,
-        "skipLibCheck": true,
+        "target": "es5",
         "outDir": "dist",
-        "lib": ["es2018"],
-        "strictNullChecks": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "jsx": "react",
+        "esModuleInterop": true,
+        "declaration": true
     },
-    "include": ["./src/**/*"]
+    "include": ["src"]
 }
