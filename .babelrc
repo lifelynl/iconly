@@ -1,9 +1,6 @@
 {
     "presets": [
-        "@babel/env",
+        // "@babel/env",
         "@babel/typescript"
-    ],
-    "plugins": [
-        "@babel/plugin-transform-async-to-generator"
     ]
 }
