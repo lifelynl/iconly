@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline"
+    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
+    "patch": "npm run build && git add . && git commit -m 'patch' && npm version patch && npm publish",
+    "minor": "echo \"You can't run minor updates like this\"",
+    "major": "echo \"You can't run major updates like this\""
   },
   "repository": {
     "type": "git",
