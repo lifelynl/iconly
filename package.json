@@ -1,6 +1,6 @@
 {
     "name": "@lifelynl/iconly",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Lifely icon parser",
     "main": "dist/iconly.js",
     "scripts": {
