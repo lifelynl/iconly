@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES2018",
         "outDir": "dist",
+        "module": "CommonJS",
         // "lib": ["dom", "dom.iterable", "esnext"],
         "jsx": "react",
         "esModuleInterop": true,

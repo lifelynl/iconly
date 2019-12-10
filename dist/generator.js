@@ -1,7 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import SVGO from 'svgo';
-export class IconlyGenerator {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+const svgo_1 = __importDefault(require("svgo"));
+class IconlyGenerator {
     constructor(config) {
         if (!process.argv[2] || !process.argv[3]) {
             logger('+------------------------------------------------------------------+', true);
@@ -17,7 +22,7 @@ export class IconlyGenerator {
             logger('ERROR: Creation of Icon components is not supported yet', true);
             process.exit(1);
         }
-        this.svgo = new SVGO({
+        this.svgo = new svgo_1.default({
             plugins: [
                 {
                     cleanupAttrs: true,
@@ -130,20 +135,20 @@ export class IconlyGenerator {
     }
     async run() {
         const { sourceDir, destDir, outputFilename, beautifyJson } = this.config;
-        if (!fs.existsSync(destDir)) {
-            fs.mkdirSync(destDir);
+        if (!fs_1.default.existsSync(destDir)) {
+            fs_1.default.mkdirSync(destDir);
         }
-        fs.writeFileSync(path.join(`${destDir}/${outputFilename ? outputFilename : 'iconlyData'}.json`), JSON.stringify(await this.scanDir(sourceDir), null, beautifyJson ? 4 : 0));
+        fs_1.default.writeFileSync(path_1.default.join(`${destDir}/${outputFilename ? outputFilename : 'iconlyData'}.json`), JSON.stringify(await this.scanDir(sourceDir), null, beautifyJson ? 4 : 0));
         logger(`Iconly Generator exported ${this.counter} SVG's into [${this.config.destDir}/${this.config.outputFilename ? this.config.outputFilename : 'iconlyData'}.json]`);
     }
     async scanDir(dir) {
         const iconsData = {};
-        const dirContent = fs.readdirSync(path.resolve(dir));
+        const dirContent = fs_1.default.readdirSync(path_1.default.resolve(dir));
         for (const entry of dirContent) {
             const entryPath = `${dir}/${entry}`;
             const parsingArray = entry.split('_');
             const entryName = this.clean(parsingArray[0].toLowerCase());
-            const isDir = fs.lstatSync(entryPath).isDirectory();
+            const isDir = fs_1.default.lstatSync(entryPath).isDirectory();
             if (isDir) {
                 const iconData = await this.scanDir(entryPath);
                 if (!iconData) {
@@ -152,8 +157,8 @@ export class IconlyGenerator {
                 }
                 iconsData[`${entryName}Group`] = iconData;
             }
-            else if (path.extname(entry) === '.svg') {
-                const svgData = await this.optimizeSVG(fs.readFileSync(entryPath, 'utf8'));
+            else if (path_1.default.extname(entry) === '.svg') {
+                const svgData = await this.optimizeSVG(fs_1.default.readFileSync(entryPath, 'utf8'));
                 if (!iconsData[entryName]) {
                     iconsData[entryName] = {
                         name: entryName,
@@ -209,6 +214,7 @@ export class IconlyGenerator {
         return [parseInt(width, 10), parseInt(height, 10)];
     }
 }
+exports.IconlyGenerator = IconlyGenerator;
 function logger(text, isError) {
     if (isError) {
         // eslint-disable-next-line no-console

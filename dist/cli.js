@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import { IconlyGenerator } from './generator';
-new IconlyGenerator({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const generator_1 = require("./generator");
+new generator_1.IconlyGenerator({
     sourceDir: process.argv[2],
     destDir: process.argv[3],
     createIconComponents: false,
