@@ -39,8 +39,11 @@ export class IconlyGenerator {
 
     public constructor(config: Configuration) {
         if (!process.argv[2] || !process.argv[3]) {
-            logger('ERROR: Please supply input- -AND- output- directory as arguments', true)
-            logger('ts-node iconly-generator.ts [inputDir] [outputDir]', true)
+            logger('+------------------------------------------------------------------+', true)
+            logger('| ERROR: Please supply input- -AND- output- directory as arguments |', true)
+            logger('|                                                                  |', true)
+            logger('|           --> iconly [inputDir] [outputDir] <--                  |', true)
+            logger('+------------------------------------------------------------------+', true)
             process.exit(1)
         }
 
