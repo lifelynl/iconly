@@ -1,5 +1,7 @@
 # Iconly
 
+<img src="iconly-logo.svg" width="400" height="200">
+
 Icon management for Lifely stack. The project will read a source directory of icons and output:
 
 - JSON with icons
