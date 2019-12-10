@@ -8,8 +8,10 @@
         "build": "rimraf dist && npm run build:types && npm run build:js",
         "build:types": "tsc --emitDeclarationOnly",
         "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-        "patch": "npm run build && git add . && git commit -m 'patch' && npm version patch && npm publish",
-        "minor": "echo \"You can't run minor updates like this\"",
+        "patch:solo": "npm version patch && npm publish",
+        "patch:full": "npm run build && git add . && git commit -m 'patch' && npm run patch:solo",
+        "minor:solo": "npm version minor && npm publish",
+        "minor:full": "npm run build && git add . && git commit -m 'minor' && npm run minor:solo",
         "major": "echo \"You can't run major updates like this\""
     },
     "bin": {
