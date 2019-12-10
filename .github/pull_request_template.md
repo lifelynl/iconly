@@ -4,10 +4,10 @@ This PR will ...
 
 - [ ] No linting errors
 - [ ] Code follows formatting rules
+- [ ] The project is build and `dist/` is comitted
 
 # When updating to master
 
-- [ ] The project is build and `dist/` is comitted
 - [ ] The version number is updated
 - [ ] The package is being published
 - [ ] Git tag is set
