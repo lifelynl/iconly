@@ -6,3 +6,5 @@ new IconlyGenerator({
     createIconComponents: false,
     beautifyJson: true,
 })
+
+console.log('im changing the build u know')
