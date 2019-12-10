@@ -1,6 +1,6 @@
 {
-    "name": "iconly",
-    "version": "1.0.1",
+    "name": "@lifelynl/iconly",
+    "version": "1.0.3",
     "description": "Lifely icon parser",
     "main": "dist/iconly.js",
     "scripts": {
@@ -15,6 +15,9 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/lifelynl/Iconly.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
     },
     "author": "Lifely",
     "license": "SEE LICENSE IN LICENSE.md",

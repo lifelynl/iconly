@@ -7,4 +7,4 @@ new IconlyGenerator({
     beautifyJson: true,
 })
 
-console.log('testing')
+console.log('im changing the build u know')
