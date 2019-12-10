@@ -1,35 +1,35 @@
 {
-  "name": "iconly",
-  "version": "1.0.1",
-  "description": "Lifely icon parser",
-  "main": "dist/iconly.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && npm run build:types && npm run build:js",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "patch": "npm run build && git add . && git commit -m 'patch' && npm version patch && npm publish",
-    "minor": "echo \"You can't run minor updates like this\"",
-    "major": "echo \"You can't run major updates like this\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lifelynl/Iconly.git"
-  },
-  "author": "Lifely",
-  "license": "SEE LICENSE IN LICENSE.md",
-  "bugs": {
-    "url": "https://github.com/lifelynl/Iconly/issues"
-  },
-  "homepage": "https://github.com/lifelynl/Iconly#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/preset-typescript": "^7.6.0",
-    "@types/node": "^12.12.16",
-    "@types/svgo": "^1.3.0",
-    "rimraf": "^3.0.0",
-    "svgo": "^1.3.2",
-    "typescript": "^3.7.3"
-  }
+    "name": "iconly",
+    "version": "1.0.1",
+    "description": "Lifely icon parser",
+    "main": "dist/iconly.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rimraf dist && npm run build:types && npm run build:js",
+        "build:types": "tsc --emitDeclarationOnly",
+        "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
+        "patch": "npm run build && git add . && git commit -m 'patch' && npm version patch && npm publish",
+        "minor": "echo \"You can't run minor updates like this\"",
+        "major": "echo \"You can't run major updates like this\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lifelynl/Iconly.git"
+    },
+    "author": "Lifely",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/lifelynl/Iconly/issues"
+    },
+    "homepage": "https://github.com/lifelynl/Iconly#readme",
+    "devDependencies": {
+        "@babel/cli": "^7.7.5",
+        "@babel/core": "^7.7.5",
+        "@babel/preset-typescript": "^7.6.0",
+        "@types/node": "^12.12.16",
+        "@types/svgo": "^1.3.0",
+        "rimraf": "^3.0.0",
+        "svgo": "^1.3.2",
+        "typescript": "^3.7.3"
+    }
 }
