@@ -6,5 +6,3 @@ new IconlyGenerator({
     createIconComponents: false,
     beautifyJson: true,
 })
-
-console.log('testing')
