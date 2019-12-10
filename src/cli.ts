@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { IconlyGenerator } from './generator'
 
 new IconlyGenerator({
