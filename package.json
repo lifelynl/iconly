@@ -16,6 +16,9 @@
         "type": "git",
         "url": "git+https://github.com/lifelynl/Iconly.git"
     },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
     "author": "Lifely",
     "license": "SEE LICENSE IN LICENSE.md",
     "bugs": {
