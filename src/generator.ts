@@ -10,6 +10,13 @@ interface Configuration {
     createIconComponents?: boolean
 }
 
+interface IconSize {
+    width: number
+    height?: number
+}
+
+export type IconSizeType = number | number[] | IconSize
+
 export interface IconData {
     size: number[] // NOTE: This should be [number, number] but TS doesn't understand this when re-importing the generated JSON
     sourcePath: string
@@ -17,22 +24,34 @@ export interface IconData {
 }
 
 export interface IconType {
-    name: string
-    svgs: IconData[]
+    name?: string
+    svgs?: IconData[]
 }
 
-class Iconly {
+interface IconsData {
+    [key: string]: IconType
+}
+
+export class IconlyGenerator {
     private config: Configuration
     private svgo: SVGO
     private counter: number
 
     public constructor(config: Configuration) {
-        this.counter = 0
-        this.config = config
-        if (this.config.createIconComponents) {
-            console.error('ERROR: Creation of Icon components is not supported yet')
+        if (!process.argv[2] || !process.argv[3]) {
+            logger('ERROR: Please supply input- -AND- output- directory as arguments', true)
+            logger('ts-node iconly-generator.ts [inputDir] [outputDir]', true)
             process.exit(1)
         }
+
+        this.counter = 0
+        this.config = config
+
+        if (this.config.createIconComponents) {
+            logger('ERROR: Creation of Icon components is not supported yet', true)
+            process.exit(1)
+        }
+
         this.svgo = new SVGO({
             plugins: [
                 {
@@ -142,19 +161,23 @@ class Iconly {
                 },
             ],
         })
+
         this.run()
     }
 
     private async run() {
         const { sourceDir, destDir, outputFilename, beautifyJson } = this.config
+
         if (!fs.existsSync(destDir)) {
             fs.mkdirSync(destDir)
         }
+
         fs.writeFileSync(
             path.join(`${destDir}/${outputFilename ? outputFilename : 'iconlyData'}.json`),
             JSON.stringify(await this.scanDir(sourceDir), null, beautifyJson ? 4 : 0)
         )
-        console.log(
+
+        logger(
             `Iconly Generator exported ${this.counter} SVG's into [${this.config.destDir}/${
                 this.config.outputFilename ? this.config.outputFilename : 'iconlyData'
             }.json]`
@@ -162,7 +185,7 @@ class Iconly {
     }
 
     private async scanDir(dir: string) {
-        const iconsData: any = {}
+        const iconsData: IconsData = {}
         const dirContent = fs.readdirSync(path.resolve(dir))
 
         for (const entry of dirContent) {
@@ -172,7 +195,14 @@ class Iconly {
             const isDir = fs.lstatSync(entryPath).isDirectory()
 
             if (isDir) {
-                iconsData[`${entryName}Group`] = await this.scanDir(entryPath)
+                const iconData = await this.scanDir(entryPath)
+
+                if (!iconData) {
+                    logger(`Couldn't get data for ${entryPath}`)
+                    return process.exit(1)
+                }
+
+                iconsData[`${entryName}Group`] = iconData
             } else if (path.extname(entry) === '.svg') {
                 const svgData = await this.optimizeSVG(fs.readFileSync(entryPath, 'utf8'))
 
@@ -190,7 +220,13 @@ class Iconly {
                     this.counter++
                 } else {
                     try {
-                        iconsData[entryName].svgs.push({
+                        const iconData = iconsData[entryName]
+
+                        if (!iconData || !iconData.svgs) {
+                            throw new Error('Unexpected empty data')
+                        }
+
+                        iconData.svgs.push({
                             sourcePath: entryPath,
                             size: this.getViewboxSize(svgData),
                             fileData: svgData,
@@ -230,15 +266,15 @@ class Iconly {
     }
 }
 
-// Usage
-if (!process.argv[2] || !process.argv[3]) {
-    console.error('ERROR: Please supply input- -AND- output- directory as arguments')
-    console.error('ts-node iconly-generator.ts [inputDir] [outputDir]')
-    process.exit(1)
+function logger(text: string, isError?: boolean) {
+    if (isError) {
+        // eslint-disable-next-line no-console
+        console.error(text)
+        return
+    }
+
+    if (process.argv[4] === '-v') {
+        // eslint-disable-next-line no-console
+        console.log(text)
+    }
 }
-new Iconly({
-    sourceDir: process.argv[2],
-    destDir: process.argv[3],
-    createIconComponents: false,
-    beautifyJson: true,
-})
