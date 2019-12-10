@@ -10,3 +10,4 @@ This PR will ...
 - [] The project is build and `dist/` is comitted
 - [] The version number is updated
 - [] The package is being published
+- [] Git tag is set
