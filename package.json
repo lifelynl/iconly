@@ -8,9 +8,9 @@
         "build": "rimraf dist && npm run build:types && npm run build:js",
         "build:types": "tsc --emitDeclarationOnly",
         "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-        "patch:solo": "npm version patch && npm publish",
+        "patch:solo": "npm version patch && npm publish && git push",
         "patch:full": "npm run build && git add . && git commit -m 'patch' && npm run patch:solo",
-        "minor:solo": "npm version minor && npm publish",
+        "minor:solo": "npm version minor && npm publish && git push",
         "minor:full": "npm run build && git add . && git commit -m 'minor' && npm run minor:solo",
         "major": "echo \"You can't run major updates like this\""
     },
