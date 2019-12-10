@@ -5,8 +5,9 @@
     "main": "dist/generator.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "rimraf dist && npm run build:types",
+        "build": "rimraf dist && npm run build:types && npm run build:js",
         "build:types": "tsc --emitDeclarationOnly",
+        "build:js": "tsc",
         "patch:solo": "npm version patch && npm publish && git push",
         "patch:full": "npm run build && git add . && git commit -m 'patch' && npm run patch:solo",
         "minor:solo": "npm version minor && npm publish && git push",
