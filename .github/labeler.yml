@@ -1,10 +1,10 @@
 build:
-- dist/*
+    - dist/*
 
 source:
-- src/*
+    - src/*
 
 chore:
-- .*/**/*
-- Itermocil.yml
-- "*.code-workspace"
+    - .*/**/*
+    - Itermocil.yml
+    - '*.code-workspace'
