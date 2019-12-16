@@ -126,9 +126,6 @@ class IconlyGenerator {
                 {
                     removeDimensions: true,
                 },
-                {
-                    removeAttrs: { attrs: '(stroke|fill)' },
-                },
             ],
         });
         this.run();

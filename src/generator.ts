@@ -159,9 +159,6 @@ export class IconlyGenerator {
                 {
                     removeDimensions: true,
                 },
-                {
-                    removeAttrs: { attrs: '(stroke|fill)' },
-                },
             ],
         })
 
