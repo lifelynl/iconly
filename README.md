@@ -19,7 +19,7 @@ Any folder names are suffixed with `Group`
 If you want to use Iconly directly from the command line you can install it using
 
 ``` BASH
-npm isntall -g @lifelynl/iconly --registry=https://npm.pkg.github.com/lifelynl
+npm install -g @lifelynl/iconly --registry=https://npm.pkg.github.com/lifelynl
 ```
 
 ## Source rules
