@@ -1,0 +1,42 @@
+{
+    "name": "@lifelynl/iconly",
+    "version": "1.2.0",
+    "description": "Lifely icon parser",
+    "main": "dist/generator.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rimraf dist && npm run build:types && npm run build:js",
+        "build:types": "tsc --emitDeclarationOnly",
+        "build:js": "tsc",
+        "patch:solo": "npm version patch && npm publish && git push",
+        "patch:full": "npm run build && git add . && git commit -m 'patch' && npm run patch:solo",
+        "minor:solo": "npm version minor && npm publish && git push",
+        "minor:full": "npm run build && git add . && git commit -m 'minor' && npm run minor:solo",
+        "major": "echo \"You can't run major updates like this\""
+    },
+    "bin": {
+        "iconly": "./dist/cli.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lifelynl/Iconly.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "author": "Lifely",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/lifelynl/Iconly/issues"
+    },
+    "homepage": "https://github.com/lifelynl/Iconly#readme",
+    "dependencies": {
+        "svgo": "^1.3.2"
+    },
+    "devDependencies": {
+        "@types/node": "^12.12.16",
+        "@types/svgo": "^1.3.0",
+        "rimraf": "^3.0.0",
+        "typescript": "^3.7.3"
+    }
+}

@@ -1,0 +1,52 @@
+[
+    {
+        "name": "chore",
+        "color": "#130f40",
+        "description": "Updating configuration files"
+    },
+    {
+        "name": "devops",
+        "color": "#30336b",
+        "description": "Devops changes"
+    },
+    {
+        "name": "dependencies",
+        "color": "#0652DD",
+        "description": "Update to dependency files"
+    },
+    {
+        "name": "source",
+        "color": "#A3CB38",
+        "description": "Updates to client code"
+    },
+    {
+        "name": "build",
+        "color": "#000000",
+        "description": "Updating configuration files"
+    },
+    {
+        "name": "technical debt",
+        "color": "#F79F1F",
+        "description": "Something is broken"
+    },
+    {
+        "name": "bug",
+        "color": "#EE5A24",
+        "description": "Something is broken"
+    },
+    {
+        "name": "security",
+        "color": "#EA2027",
+        "description": "Related to security vulnerabilities"
+    },
+    {
+        "name": "wontfix",
+        "color": "#FFFFFF",
+        "description": "This will not be worked on"
+    },
+    {
+        "name": "enhancement",
+        "color": "#12CBC4",
+        "description": "New feature or request"
+    }
+]
